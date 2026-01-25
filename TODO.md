@@ -40,12 +40,15 @@
   npx @modelcontextprotocol/inspector env PYTHONPATH=src RAG_DEBUG=1 uv run python -m server.main
   ```
 
-## Step 5: Ollama tool calling の動作確認
+## Step 5: Ollama tool calling の動作確認 ✅
 
-- [ ] `tests/test_ollama_tools.py` 作成
-- [ ] **テスト**: Ollamaがツール定義を受け取り、ツール呼び出しを返すことを確認
-  - ツール定義のJSON形式
-  - tool_calls の解析方法
+- [x] `tests/test_ollama_tools.py` 作成
+  - モックLLM関数（開発中はOllamaの代わりに使用）
+  - ツール定義（Ollama形式）
+  - ヘルパー関数（has_tool_calls, get_tool_calls, get_text_content）
+- [x] **テスト**: ツール呼び出しの判定が正しく動作することを確認
+  - 検索キーワード含む → tool_calls を返す
+  - 挨拶など → テキスト応答を返す
 
 ## Step 6: MCPクライアントの実装
 
@@ -73,6 +76,6 @@
 | 2 | 完了 | 野球テキスト6件 + ChromaDBテスト15件 |
 | 3 | 完了 | indexer.py + テスト4件 |
 | 4 | 完了 | FastMCP + デバッグログ |
-| 5 | 未着手 | |
+| 5 | 完了 | モックLLM + テスト5件 |
 | 6 | 未着手 | |
 | 7 | 未着手 | |
