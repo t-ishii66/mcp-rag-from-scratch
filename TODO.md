@@ -50,14 +50,14 @@
   - 検索キーワード含む → tool_calls を返す
   - 挨拶など → テキスト応答を返す
 
-## Step 6: MCPクライアントの実装
+## Step 6: MCPクライアントの実装 ✅
 
-- [ ] `src/client/__init__.py` 作成
-- [ ] `src/client/main.py` 作成
-  - MCPサーバーへの接続
-  - Ollamaとの連携
+- [x] `src/client/__init__.py` 作成
+- [x] `src/client/main.py` 作成
+  - MCPサーバーへの接続（stdio_client使用）
+  - LLM切り替え（`USE_OLLAMA=1`でOllama、なければモック）
   - 対話ループ
-- [ ] **テスト**: `tests/test_client.py` でMCP通信を確認
+- [x] **テスト**: `tests/test_client.py` でモックLLM動作確認
 
 ## Step 7: 統合テスト
 
@@ -77,5 +77,5 @@
 | 3 | 完了 | indexer.py + テスト4件 |
 | 4 | 完了 | FastMCP + デバッグログ |
 | 5 | 完了 | モックLLM + テスト5件 |
-| 6 | 未着手 | |
+| 6 | 完了 | MCPクライアント + テスト4件 |
 | 7 | 未着手 | |
