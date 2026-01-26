@@ -111,7 +111,7 @@ async def run_client():
             await session.initialize()
             print("MCPサーバーに接続しました")
             print()
-
+            #ここで MCPサーバからtools/機能一覧を取得しても良い。あくまで手順を示し、実際にsearch というものを取得する。
             # 対話ループ
             while True:
                 # ユーザー入力
