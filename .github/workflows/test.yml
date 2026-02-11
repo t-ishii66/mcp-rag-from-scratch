@@ -1,0 +1,27 @@
+name: Test with pytest
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pythonセットアップ
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # uv インストール
+      - name: Install uv
+        run: pip install uv
+
+      # 依存インストール（pyproject.toml or requirements.txt）
+      - name: Install dependencies
+        run: uv sync
+      # テスト実行
+      - name: Run pytest
+        run: uv run pytest
