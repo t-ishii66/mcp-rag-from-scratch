@@ -82,6 +82,40 @@ uv run python tools/query_chromadb.py
 
 ---
 
+## デバッグ: JSON-RPC 通信の可視化
+
+`RAG_DEBUG=1` を付けると、MCP クライアント・サーバー間の JSON-RPC メッセージが表示されます。
+`initialize` → `tools/list` → `tools/call` の流れが見えるので、MCP プロトコルの理解に役立ちます。
+
+```bash
+RAG_DEBUG=1 PYTHONPATH=src uv run python -m client.main
+```
+
+出力例:
+
+```
+[JSON-RPC] → 送信: tools/call
+{
+  "method": "tools/call",
+  "params": {
+    "name": "search",
+    "arguments": {"query": "大堀翔の成績"}
+  }
+}
+
+[JSON-RPC] ← 受信: tools/call
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[1] 出典: stats.txt (類似度: 0.91)\npassage: 大堀翔の詳細成績データ..."
+    }
+  ]
+}
+```
+
+---
+
 ## データの差し替え
 
 `data/documents` の `.txt` ファイルを差し替えれば、別の用途の検索ツールになります。
