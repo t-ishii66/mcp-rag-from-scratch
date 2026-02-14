@@ -39,13 +39,21 @@ EMBEDDING_FUNCTION = SentenceTransformerEmbeddingFunction(
 )
 E5_QUERY_PREFIX = "query: "
 
-# ChromaDBに接続（サーバー起動時に1回だけ）
-chroma_client = chromadb.PersistentClient(path=str(CONFIG["chroma_path"]))
-collection = chroma_client.get_collection(
-    "documents",
-    embedding_function=EMBEDDING_FUNCTION,
-)
-debug_log(f"ChromaDB接続: {CONFIG['chroma_path']}")
+# ChromaDBコレクション（初回アクセス時に接続する）
+_collection = None
+
+
+def get_collection():
+    """ChromaDBコレクションを取得する（初回のみ接続）"""
+    global _collection
+    if _collection is None:
+        client = chromadb.PersistentClient(path=str(CONFIG["chroma_path"]))
+        _collection = client.get_collection(
+            "documents",
+            embedding_function=EMBEDDING_FUNCTION,
+        )
+        debug_log(f"ChromaDB接続: {CONFIG['chroma_path']}")
+    return _collection
 
 
 @mcp.tool()
@@ -68,6 +76,7 @@ def search(query: str, top_k: int = 5) -> str:
     # 検索実行（クエリをベクトル化 → ChromaDBで類似度検索）
     print("クエリをベクトル化中...", file=sys.stderr)
     debug_log("検索実行中...")
+    collection = get_collection()
     results = collection.query(
         query_texts=[f"{E5_QUERY_PREFIX}{query}"],
         n_results=top_k,
