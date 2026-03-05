@@ -1,0 +1,44 @@
+site_name: MCP RAG from scratch
+
+nav:
+  - ホーム: index.md
+  - 環境構築: 01-setup.md
+  - MCP 解説: 02-mcp-explained.md
+  - RAG 解説: 03-rag-explained.md
+  - コード解説: 04-code-walkthrough.md
+  - チュートリアル: 05-tutorial.md
+
+theme:
+  name: material
+  language: ja
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: ダークモードに切り替え
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: ライトモードに切り替え
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - def_list
+  - tables
