@@ -50,7 +50,7 @@
 
 | # | ドキュメント | 内容 |
 |---|-------------|------|
-| 1 | [環境構築ガイド](./01-setup.md) | Python・uv・Ollama のインストールからプロジェクトの起動まで |
+| 1 | [環境構築ガイド](./01-setup.md) | uv・Ollama のインストールからプロジェクトの起動まで |
 | 2 | [MCP プロトコル解説](./02-mcp-explained.md) | MCP とは何か、JSON-RPC 通信の仕組み、ツール呼び出しの流れ |
 | 3 | [RAG 解説](./03-rag-explained.md) | RAG の概念、ベクトル検索、チャンク分割、埋め込みモデル |
 | 4 | [コード解説](./04-code-walkthrough.md) | 全ソースファイルの処理内容を1行ずつ追う詳細ガイド |
@@ -88,11 +88,10 @@ cd mcp-rag-from-scratch
 # 依存関係のインストール
 uv sync
 
-# Ollama モデルのダウンロード
-ollama pull qwen3:14b
-
-# data/documents/ にテキストファイルを配置してから起動
-uv run python -m client.main
+# インデックス作成 → 起動
+PYTHONPATH=src uv run python -m server.indexer
+PYTHONPATH=src uv run python -m client.main
 ```
 
+まずは同梱のサンプルデータで動作を学び、仕組みが分かったら `data/documents/` のテキストファイルを自分のデータに差し替えて、オリジナルの RAG を構築してみてください。
 詳しい手順は [環境構築ガイド](./01-setup.md) を参照してください。

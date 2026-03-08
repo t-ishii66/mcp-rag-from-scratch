@@ -1,38 +1,20 @@
 # 環境構築ガイド
 
 このプロジェクトを動かすために必要なツールのインストール手順です。
+本ガイドでは **uv** を使った環境構築を説明します。uv は Python 本体のダウンロードも自動で行うため、手順がもっともシンプルです。
+Python の環境構築に慣れている方は、venv + pip など好みのツールで構築しても問題ありません。
 
 ## 必要なもの
 
 | ツール | 必須？ | 用途 |
 |--------|--------|------|
-| Python 3.11+ | 必須 | プロジェクト実行 |
-| uv | 必須 | Python パッケージ管理 |
+| uv | 必須 | Python 本体とパッケージの管理 |
 | Ollama | 任意 | ローカル LLM（モック LLM でも動作確認可能） |
 
-## 1. Python のインストール
+## 1. uv のインストール
 
-Python 3.11 以上が必要です。
-
-```bash
-# バージョン確認
-python3 --version
-```
-
-3.11 未満の場合はアップデートしてください。
-
-```bash
-# Ubuntu / Debian
-sudo apt update && sudo apt install python3.11
-
-# macOS（Homebrew）
-brew install python@3.11
-```
-
-## 2. uv のインストール
-
-[uv](https://docs.astral.sh/uv/) は高速な Python パッケージマネージャです。
-`pip` の代わりに使います。
+[uv](https://docs.astral.sh/uv/) は Python 本体のインストールからパッケージ管理まで一括で行えるツールです。
+**Python を別途インストールする必要はありません**——`uv sync` が `pyproject.toml` の設定に基づいて適切なバージョンの Python を自動でダウンロードしてくれます。
 
 ```bash
 # Linux / macOS
@@ -48,7 +30,7 @@ brew install uv
 uv --version
 ```
 
-## 3. プロジェクトのセットアップ
+## 2. プロジェクトのセットアップ
 
 ```bash
 # リポジトリをクローン
@@ -68,13 +50,15 @@ uv sync
 | `ollama` | >= 0.4.0 | Ollama Python クライアント |
 | `sentence-transformers` | >= 2.2.0 | テキスト埋め込みモデル |
 
-## 4. ドキュメントのインデックス作成
+## 3. ドキュメントのインデックス作成
 
-ChromaDB にテキストデータを登録します。初回のみ必要です。
+`data/documents/` にあるサンプルのテキストファイルを ChromaDB に登録します。初回のみ必要です。
 
 ```bash
 PYTHONPATH=src uv run python -m server.indexer
 ```
+
+動作を理解したあとは、`data/documents/` のファイルを自分のテキストデータに差し替えてインデックスを再作成すれば、オリジナルの RAG を試せます。
 
 出力例:
 
@@ -104,7 +88,7 @@ ChromaDB保存先: /path/to/chroma_db
 初回実行時には埋め込みモデル（約 470MB）が Hugging Face から自動ダウンロードされます。
 2回目以降はキャッシュが使われるため高速です。
 
-## 5. 動作確認
+## 4. 動作確認
 
 ### モック LLM で確認（Ollama 不要）
 
