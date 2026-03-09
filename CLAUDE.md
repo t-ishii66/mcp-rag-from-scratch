@@ -105,7 +105,7 @@ user_input = input("質問: ")
 
 # 2. Ollamaに送信（ツール定義付き）
 response = ollama.chat(
-    model="qwen3:14b",
+    model="qwen3:1.7b",
     messages=[{"role": "user", "content": user_input}],
     tools=[search_tool_definition]
 )
@@ -129,7 +129,7 @@ if response.tool_calls:
 | ChromaDB保存先 | `RAG_CHROMA_PATH` | `./chroma_db` |
 | チャンクサイズ | `RAG_CHUNK_SIZE` | `400` |
 | オーバーラップ | `RAG_CHUNK_OVERLAP` | `80` |
-| Ollamaモデル | `OLLAMA_MODEL` | `qwen3:14b` |
+| Ollamaモデル | `OLLAMA_MODEL` | `qwen3:1.7b` |
 
 ## 開発コマンド
 
@@ -184,7 +184,7 @@ dependencies = [
 
 1. **Ollama**: インストール済みで、モデルがダウンロード済み
    ```bash
-   ollama pull qwen3:14b
+   ollama pull qwen3:1.7b
    ```
 
 2. **Python 3.11+**: uv でインストール管理

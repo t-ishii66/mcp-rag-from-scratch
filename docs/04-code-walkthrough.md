@@ -40,7 +40,7 @@ CONFIG = {
     "chroma_path": Path(os.environ.get("RAG_CHROMA_PATH", PROJECT_ROOT / "chroma_db")),
     "chunk_size": int(os.environ.get("RAG_CHUNK_SIZE", "400")),
     "chunk_overlap": int(os.environ.get("RAG_CHUNK_OVERLAP", "80")),
-    "ollama_model": os.environ.get("OLLAMA_MODEL", "qwen3:14b"),
+    "ollama_model": os.environ.get("OLLAMA_MODEL", "qwen3:1.7b"),
     "embedding_model": "intfloat/multilingual-e5-small",
 }
 ```

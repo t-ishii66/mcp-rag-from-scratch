@@ -31,7 +31,7 @@ CONFIG = {
     "chunk_overlap": int(os.environ.get("RAG_CHUNK_OVERLAP", "80")),
 
     # 使用するLLMモデル
-    "ollama_model": os.environ.get("OLLAMA_MODEL", "qwen3:14b"),
+    "ollama_model": os.environ.get("OLLAMA_MODEL", "qwen3:1.7b"),
 
     # 埋め込みモデル（初回起動時に Hugging Face から自動ダウンロードされる、約470MB）
     "embedding_model": "intfloat/multilingual-e5-small",

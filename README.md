@@ -69,7 +69,7 @@ MCP のツール呼び出しとして RAG を実現しています。
 ---
 
 <details>
-<summary><strong>📖 コラム: Ollama のインストールと qwen3:14b の導入</strong></summary>
+<summary><strong>📖 コラム: Ollama のインストールと qwen3:1.7b の導入</strong></summary>
 
 このプロジェクトはモック LLM で動作確認できますが、実際の LLM を使うとツール呼び出しの判断や回答生成がよりリアルになります。
 ここでは Ollama を使ってローカル LLM を動かす手順を紹介します。
@@ -95,18 +95,18 @@ ollama serve
 別ターミナルで実行するか、バックグラウンドで起動します。
 macOS / Windows のデスクトップアプリを使っている場合は自動で起動しています。
 
-### 3. qwen3:14b をダウンロード
+### 3. qwen3:1.7b をダウンロード
 
 ```bash
-ollama pull qwen3:14b
+ollama pull qwen3:1.7b
 ```
 
-約 9GB のダウンロードになります。完了すると `ollama list` に表示されます。
+約 1.5GB のダウンロードになります。完了すると `ollama list` に表示されます。
 
 ### 4. 動作確認
 
 ```bash
-ollama run qwen3:14b "こんにちは"
+ollama run qwen3:1.7b "こんにちは"
 ```
 
 応答が返ってくれば準備完了です。このプロジェクトでは `USE_OLLAMA=1` を付けて起動すると Ollama が使われます。
@@ -115,6 +115,7 @@ ollama run qwen3:14b "こんにちは"
 
 | モデル | 必要 VRAM/RAM |
 |--------|--------------|
+| qwen3:1.7b | 約 2GB |
 | qwen3:8b | 約 5GB |
 | qwen3:14b | 約 9GB |
 
@@ -155,7 +156,7 @@ OLLAMA_MODEL=qwen3:8b USE_OLLAMA=1 PYTHONPATH=src uv run python -m client.main
 
 ## Ollama のモデル設定
 
-`qwen3:14b` で動作確認しています。
+`qwen3:1.7b` をデフォルトで使用しています。
 他のモデルを使う場合は `src/server/config.py` の `OLLAMA_MODEL` を変更するか、環境変数で指定してください。
 
 ```bash
