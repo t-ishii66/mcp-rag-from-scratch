@@ -57,6 +57,14 @@ uv sync
 PYTHONPATH=src uv run python -m server.indexer
 ```
 
+初回は埋め込みモデル（約 470MB）のダウンロードとベクトル計算が走るため、数分かかります。
+出力が表示されるまで時間がかかりますが、止まっているわけではないのでそのまま待ってください。
+
+初回ダウンロード時に以下のような警告が出ますが、いずれも無視して問題ありません。
+
+- **`UNEXPECTED` (embeddings.position_ids)** — モデルに含まれる未使用のパラメータに関する通知で、動作に影響はありません
+- **`Please set a HF_TOKEN`** — Hugging Face への認証なしでもダウンロードできます。速度制限が気になる場合のみトークンを設定してください
+
 動作を理解したあとは、`data/documents/` のファイルを自分のテキストデータに差し替えてインデックスを再作成すれば、オリジナルの RAG を試せます。
 
 出力例:
@@ -84,8 +92,7 @@ ChromaDB保存先: /path/to/chroma_db
 === 完了: 42チャンクをインデックス ===
 ```
 
-初回実行時には埋め込みモデル（約 470MB）が Hugging Face から自動ダウンロードされます。
-2回目以降はキャッシュが使われるため高速です。
+2回目以降はモデルのダウンロードは不要ですが、インデックスの再構築（ベクトル計算）は毎回行われるため、同程度の時間がかかります。
 
 ## 4. 動作確認
 
@@ -131,17 +138,21 @@ USE_OLLAMA=1 PYTHONPATH=src uv run python -m client.main
 
 #### メモリの目安
 
-| モデル | 必要 VRAM / RAM |
-|--------|----------------|
-| qwen3:8b | 約 5GB |
-| qwen3:14b | 約 9GB |
+| モデル | 必要メモリ | 備考 |
+|--------|-----------|------|
+| qwen3:1.7b | 約 2GB | メモリが少ない環境向け |
+| qwen3:8b | 約 5GB | バランス型 |
+| qwen3:14b | 約 9GB | デフォルト。高品質な回答 |
 
-GPU メモリが足りない場合は CPU でも動きますが応答が遅くなります。
-小さいモデルを使う場合は環境変数で変更できます:
+メモリ不足で `model requires more system memory ... than is available` というエラーが出た場合は、小さいモデルに切り替えてください:
 
 ```bash
-OLLAMA_MODEL=qwen3:8b USE_OLLAMA=1 PYTHONPATH=src uv run python -m client.main
+# 小さいモデルをダウンロードして使う
+ollama pull qwen3:1.7b
+OLLAMA_MODEL=qwen3:1.7b USE_OLLAMA=1 PYTHONPATH=src uv run python -m client.main
 ```
+
+GPU メモリが足りない場合は CPU でも動きますが、応答が遅くなります。
 
 ## テストの実行
 
