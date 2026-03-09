@@ -9,7 +9,16 @@ dependencies = [
     "chromadb>=0.4.0",
     "ollama>=0.4.0",
     "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
 ]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [build-system]
 requires = ["hatchling"]

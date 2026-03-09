@@ -207,6 +207,7 @@ RAG_DEBUG=1 PYTHONPATH=src uv run python -m client.main
 ## ステップ 5: Ollama で本格的に動かす（任意）
 
 Ollama がインストール済みの場合、実際の LLM を使って動かせます。
+まだインストールしていない場合は [環境構築ガイドの「Ollama を使う場合」](./01-setup.md#ollama-を使う場合任意) を参照してください。
 
 ```bash
 # Ollama が起動していることを確認

@@ -102,9 +102,8 @@ def search(query: str, top_k: int = 5) -> str:
     output_lines = []
     for i, (doc, meta, dist) in enumerate(zip(documents, metadatas, distances)):
         source = meta.get("source", "不明")
-        # 類似度スコア（距離が小さいほど類似）
-        score = 1 - dist  # 0〜1の類似度に変換（概算）
-        output_lines.append(f"[{i+1}] 出典: {source} (類似度: {score:.2f})")
+        # 距離スコア（小さいほど類似。ChromaDB デフォルトは L2 距離）
+        output_lines.append(f"[{i+1}] 出典: {source} (距離: {dist:.2f})")
         output_lines.append(doc)
         output_lines.append("")  # 空行
 
