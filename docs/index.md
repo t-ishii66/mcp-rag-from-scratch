@@ -42,7 +42,7 @@
 
 ## 特徴
 
-- **コード量が少ない** — クライアントとサーバー合わせて約 200 行。全部読めます
+- **コード量が少ない** — クライアントとサーバー合わせて約 400 行。全部読めます
 - **外部 API 不要** — Ollama でローカル LLM を使うので、インターネット接続がなくても動作
 - **日本語コメント付き** — 各処理が何をしているか、コード内のコメントで説明
 
@@ -82,7 +82,7 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/benono/mcp-rag-from-scratch.git
+git clone https://github.com/t-ishii66/mcp-rag-from-scratch.git
 cd mcp-rag-from-scratch
 
 # 依存関係のインストール
