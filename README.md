@@ -1,3 +1,5 @@
+![](top.png)
+
 # MCP RAG from scratch
 
 **MCP と RAG を「完全自作」して仕組みを理解する**、ハンズオン型の学習プロジェクトです。
