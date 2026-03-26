@@ -236,7 +236,7 @@ OLLAMA_MODEL=qwen3:8b USE_OLLAMA=1 PYTHONPATH=src uv run python -m client.main
 ## Ollama のモデル設定
 
 `qwen3:1.7b` をデフォルトで使用しています。
-他のモデルを使う場合は `src/server/config.py` の `OLLAMA_MODEL` を変更するか、環境変数で指定してください。
+他のモデルを使う場合は環境変数 `OLLAMA_MODEL` で指定してください。
 
 ```bash
 # 環境変数で変更する場合
@@ -291,7 +291,7 @@ RAG_DEBUG=1 PYTHONPATH=src uv run python -m client.main
   "content": [
     {
       "type": "text",
-      "text": "[1] 出典: stats.txt (類似度: 0.91)\npassage: 大堀翔の詳細成績データ..."
+      "text": "[1] 出典: stats.txt (距離: 0.91)\npassage: 大堀翔の詳細成績データ..."
     }
   ]
 }

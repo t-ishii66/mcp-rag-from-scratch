@@ -186,7 +186,7 @@ RAG_DEBUG=1 PYTHONPATH=src uv run python -m client.main
   "content": [
     {
       "type": "text",
-      "text": "[1] 出典: stats.txt (類似度: 0.91)\npassage: 大堀翔の詳細成績データ..."
+      "text": "[1] 出典: stats.txt (距離: 0.91)\npassage: 大堀翔の詳細成績データ..."
     }
   ]
 }

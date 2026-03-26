@@ -32,30 +32,23 @@ EMBEDDING_FUNCTION = SentenceTransformerEmbeddingFunction(
 )
 E5_QUERY_PREFIX = "query: "
 
-# ChromaDBの保存先（プロジェクトルートの chroma_db/）
-CHROMA_PATH = PROJECT_ROOT / "chroma_db"
+# ChromaDBの保存先（CONFIG から取得。環境変数 RAG_CHROMA_PATH で変更可能）
+CHROMA_PATH = Path(CONFIG["chroma_path"])
 
 
 def main():
-    # === データベースを再初期化 ===
-    print(f"ChromaDB を初期化します: {CHROMA_PATH}")
-    
-    # 既存のデータベース削除
-    import shutil
-    if CHROMA_PATH.exists():
-        print(f"既存のコレクションを削除中...")
-        shutil.rmtree(CHROMA_PATH)
-    
-    CHROMA_PATH.mkdir(parents=True, exist_ok=True)
-    
-    # data/documents を再読み込みしてインデックス作成
-    print(f"ドキュメント ({CONFIG['documents_path']}) をインデックス中...")
-    index_documents(
-        documents_path=Path(CONFIG["documents_path"]),
-        chroma_path=CHROMA_PATH,
-        chunk_size=CONFIG["chunk_size"],
-        chunk_overlap=CONFIG["chunk_overlap"],
-    )
+    # === インデックスがなければ作成 ===
+    if not CHROMA_PATH.exists():
+        print(f"ChromaDB が見つかりません。インデックスを作成します: {CHROMA_PATH}")
+        print(f"ドキュメント ({CONFIG['documents_path']}) をインデックス中...")
+        index_documents(
+            documents_path=Path(CONFIG["documents_path"]),
+            chroma_path=CHROMA_PATH,
+            chunk_size=CONFIG["chunk_size"],
+            chunk_overlap=CONFIG["chunk_overlap"],
+        )
+    else:
+        print(f"既存の ChromaDB を使用: {CHROMA_PATH}")
     print("-" * 50)
     
     # === 初期化後、クエリ対話開始 ===

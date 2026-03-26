@@ -54,6 +54,10 @@ def split_into_chunks(text: str, chunk_size: int, overlap: int) -> list[str]:
     Returns:
         チャンクのリスト
     """
+    # overlap が chunk_size 以上だと無限ループになるのでチェック
+    if overlap >= chunk_size:
+        raise ValueError(f"overlap ({overlap}) は chunk_size ({chunk_size}) より小さくしてください")
+
     # テキストが短ければそのまま返す
     if len(text) <= chunk_size:
         return [text]
