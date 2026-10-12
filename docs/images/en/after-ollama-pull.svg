@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 326"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="After ollama pull. The model lives in a named volume, and app reaches it over HTTP">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 13px; font-weight: 600; }
+    .box   { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .boxo  { fill: #fbeeed; stroke: #d08c86; stroke-width: 1.4; }
+    .boxu  { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1.4; }
+    .name  { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .path  { fill: #1a1a1a; font-size: 11.5px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .sub   { fill: #6b6b6b; font-size: 11px; }
+    .alab  { fill: #1a1a1a; font-size: 11.5px; }
+    .ln    { stroke: #5b6b8c; stroke-width: 1.8; fill: none; }
+    .hd    { fill: #5b6b8c; }
+    .foot  { fill: #1a1a1a; font-size: 12px; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .box   { fill: #1e232b; stroke: #9aaed6; }
+      .boxo  { fill: #2a1d1d; stroke: #ff8a80; }
+      .boxu  { fill: #14161a; stroke: #4a5361; }
+      .name  { fill: #e8e8e8; }
+      .path  { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .alab  { fill: #e8e8e8; }
+      .ln    { stroke: #9aaed6; fill: none; }
+      .hd    { fill: #9aaed6; }
+      .foot  { fill: #e8e8e8; }
+    }
+  </style>
+
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hd" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="326"/>
+
+  <!-- container app -->
+  <text class="ttl" x="20" y="40">Container: app</text>
+  <rect class="box" x="20" y="52" width="200" height="86" rx="6"/>
+  <text class="sub"  x="36" y="78">runs this project's</text>
+  <text class="sub"  x="36" y="96">code</text>
+  <text class="sub"  x="36" y="120">holds no model</text>
+
+  <!-- container ollama -->
+  <text class="ttl" x="330" y="40">Container: ollama</text>
+  <rect class="boxo" x="330" y="52" width="230" height="86" rx="6"/>
+  <text class="path" x="346" y="78">11434</text>
+  <text class="sub"  x="346" y="96">is where it listens</text>
+  <text class="path" x="346" y="124">/root/.ollama</text>
+
+  <!-- HTTP -->
+  <path class="ln" d="M220,95 L324,95" marker-end="url(#a)"/>
+  <text class="alab" x="272" y="82" text-anchor="middle">HTTP</text>
+  <text class="sub"  x="272" y="114" text-anchor="middle">ollama:11434</text>
+
+  <!-- volumes -->
+  <text class="ttl" x="330" y="200">Volume: ollama-models</text>
+  <rect class="boxu" x="330" y="212" width="230" height="74" rx="6"/>
+  <text class="path" x="346" y="238">qwen3:1.7b</text>
+  <text class="sub"  x="346" y="258">1.4 GB</text>
+  <text class="sub"  x="346" y="278">in Docker's own storage</text>
+
+  <path class="ln" d="M536,206 L536,144" marker-end="url(#a)"/>
+  <text class="sub" x="546" y="178">mounted</text>
+
+  <text class="foot" x="20" y="200">pull brought in the model,</text>
+  <text class="foot" x="20" y="222">nothing else. MCP and</text>
+  <text class="foot" x="20" y="244">ChromaDB play no part yet.</text>
+
+  <text class="foot" x="20" y="312">The model lives in a volume, so docker compose down leaves it. Only down -v removes it.</text>
+</svg>

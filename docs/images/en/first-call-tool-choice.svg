@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 366"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="The first call. Send model, messages and three tools, and the one that was chosen comes back in tool_calls">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 13px; font-weight: 600; }
+    .box   { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .boxo  { fill: #fbeeed; stroke: #d08c86; stroke-width: 1.4; }
+    .boxu  { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1.4; }
+    .pick  { fill: #fbeeed; stroke: #b3261e; stroke-width: 1.6; }
+    .key   { fill: #1a1a1a; font-size: 11.5px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .val   { fill: #6b6b6b; font-size: 11.5px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .name  { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .sub   { fill: #6b6b6b; font-size: 11px; }
+    .hi    { fill: #b3261e; font-size: 11px; font-weight: 600; }
+    .to    { stroke: #b3261e; stroke-width: 1.8; fill: none; }
+    .ht    { fill: #b3261e; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .box   { fill: #1e232b; stroke: #9aaed6; }
+      .boxo  { fill: #2a1d1d; stroke: #ff8a80; }
+      .boxu  { fill: #14161a; stroke: #4a5361; }
+      .pick  { fill: #2a1d1d; stroke: #ff8a80; }
+      .key   { fill: #e8e8e8; }
+      .val   { fill: #9a9a9a; }
+      .name  { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .hi    { fill: #ff8a80; }
+      .to    { stroke: #ff8a80; }
+      .ht    { fill: #ff8a80; }
+    }
+  </style>
+
+  <defs>
+    <marker id="t" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="ht" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="366"/>
+
+  <!-- sent -->
+  <text class="ttl" x="20" y="30">What goes in - ollama.chat()</text>
+  <rect class="box" x="20" y="42" width="372" height="112" rx="6"/>
+  <text class="key" x="36" y="66">model</text><text class="val" x="130" y="66">qwen3:1.7b</text>
+  <text class="key" x="36" y="90">messages</text><text class="val" x="130" y="90">Can I bring my dog …</text>
+  <text class="key" x="36" y="114">tools</text><text class="val" x="130" y="114">all three definitions</text>
+  <text class="sub" x="130" y="134">search / list_documents / get_document</text>
+
+  <path class="to" d="M392,98 L424,98" marker-end="url(#t)"/>
+
+  <!-- Ollama -->
+  <text class="ttl" x="430" y="30">Container: ollama</text>
+  <rect class="boxo" x="430" y="42" width="330" height="268" rx="6"/>
+  <text class="name" x="448" y="70">qwen3:1.7b</text>
+  <text class="sub"  x="448" y="94">reads the three descriptions</text>
+  <text class="sub"  x="448" y="112">and picks the one that fits</text>
+
+  <rect class="pick" x="448" y="132" width="290" height="34" rx="4"/>
+  <text class="key" x="462" y="154">search</text>
+  <text class="hi"  x="724" y="154" text-anchor="end">picked this one</text>
+
+  <rect class="boxu" x="448" y="176" width="290" height="30" rx="4"/>
+  <text class="val" x="462" y="196">list_documents</text>
+
+  <rect class="boxu" x="448" y="216" width="290" height="30" rx="4"/>
+  <text class="val" x="462" y="236">get_document</text>
+
+  <text class="sub" x="448" y="276">It runs nothing. It returns a name and arguments</text>
+  <text class="sub" x="448" y="294">(it knows neither ChromaDB nor MCP)</text>
+
+  <path class="to" d="M424,264 L392,264" marker-end="url(#t)"/>
+
+  <!-- returned -->
+  <text class="ttl" x="20" y="196">What comes back - tool_calls</text>
+  <rect class="box" x="20" y="208" width="372" height="112" rx="6"/>
+  <text class="key" x="36" y="232">calls</text><text class="val" x="130" y="232">[ ... ]  &#8592; a list</text>
+  <text class="key" x="36" y="262">calls[0].function.name</text>
+  <text class="val" x="52" y="280">'search'</text>
+  <text class="key" x="36" y="300">calls[0].function.arguments</text>
+  <text class="val" x="52" y="316">{'query': 'can I bring a dog', 'top_k': 5}</text>
+
+  <text class="sub" x="20" y="350">Three go in, one comes back. The description is all it has to choose by.</text>
+</svg>

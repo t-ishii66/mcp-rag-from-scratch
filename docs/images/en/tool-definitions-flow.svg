@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 250"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="The tool definitions arrive once at startup through tools/list, and are handed to Ollama for every question">
+  <style>
+    .bg    { fill: #ffffff; }
+    .box   { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .boxo  { fill: #fbeeed; stroke: #d08c86; stroke-width: 1.4; }
+    .boxu  { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1.4; }
+    .name  { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .sub   { fill: #6b6b6b; font-size: 11px; }
+    .alab  { fill: #1a1a1a; font-size: 11.5px; }
+    .when  { fill: #6b6b6b; font-size: 11px; }
+    .ln    { stroke: #5b6b8c; stroke-width: 1.8; fill: none; }
+    .hd    { fill: #5b6b8c; }
+    .foot  { fill: #1a1a1a; font-size: 12px; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .box   { fill: #1e232b; stroke: #9aaed6; }
+      .boxo  { fill: #2a1d1d; stroke: #ff8a80; }
+      .boxu  { fill: #14161a; stroke: #4a5361; }
+      .name  { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .alab  { fill: #e8e8e8; }
+      .when  { fill: #9a9a9a; }
+      .ln    { stroke: #9aaed6; fill: none; }
+      .hd    { fill: #9aaed6; }
+      .foot  { fill: #e8e8e8; }
+    }
+  </style>
+
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hd" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="250"/>
+
+  <!-- MCP server -->
+  <rect class="box" x="14" y="62" width="180" height="96" rx="6"/>
+  <text class="name" x="30" y="90">MCP server</text>
+  <text class="sub"  x="30" y="112">holds the tool</text>
+  <text class="sub"  x="30" y="130">definitions</text>
+
+  <!-- client -->
+  <rect class="boxu" x="300" y="62" width="190" height="96" rx="6"/>
+  <text class="name" x="316" y="90">Client</text>
+  <text class="sub"  x="316" y="112">converts them to Ollama's</text>
+  <text class="sub"  x="316" y="130">shape and keeps them</text>
+
+  <!-- Ollama -->
+  <rect class="boxo" x="600" y="62" width="166" height="96" rx="6"/>
+  <text class="name" x="616" y="90">Ollama</text>
+  <text class="sub"  x="616" y="112">Knows nothing of MCP,</text>
+  <text class="sub"  x="616" y="130">and remembers nothing</text>
+
+  <!-- receive -->
+  <path class="ln" d="M194,110 L294,110" marker-end="url(#a)"/>
+  <text class="alab" x="244" y="96"  text-anchor="middle">the tools/list reply</text>
+  <text class="when" x="244" y="130" text-anchor="middle">once, at startup</text>
+
+  <!-- hand over -->
+  <path class="ln" d="M490,110 L594,110" marker-end="url(#a)"/>
+  <text class="alab" x="542" y="96"  text-anchor="middle">question + tool definitions</text>
+  <text class="when" x="542" y="130" text-anchor="middle">every single question</text>
+
+  <text class="foot" x="14" y="200">Ollama is not called at startup. The tool definitions come from the MCP server alone.</text>
+  <text class="foot" x="14" y="222">Ollama remembers nothing, so the definitions go along with every question.</text>
+</svg>

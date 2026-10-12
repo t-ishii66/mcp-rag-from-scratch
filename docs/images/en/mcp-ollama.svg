@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 372"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="The client sits at the center: HTTP and JSON with Ollama, JSON-RPC over stdio with the MCP server">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 19px; font-weight: 600; }
+    .sub   { fill: #6b6b6b; font-size: 12px; }
+    .box   { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .boxo  { fill: #fbeeed; stroke: #d08c86; stroke-width: 1.4; }
+    .boxu  { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1.4; }
+    .name  { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .path  { fill: #6b6b6b; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .alab  { fill: #1a1a1a; font-size: 11px; }
+    .note  { fill: #6b6b6b; font-size: 11px; }
+    .proto { fill: #1a1a1a; font-size: 11.5px; font-weight: 600; }
+    .to    { stroke: #b3261e; stroke-width: 1.8; fill: none; }
+    .fr    { stroke: #5b6b8c; stroke-width: 1.8; stroke-dasharray: 5 3; fill: none; }
+    .ht    { fill: #b3261e; }
+    .hf    { fill: #5b6b8c; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .box   { fill: #1e232b; stroke: #9aaed6; }
+      .boxo  { fill: #2a1d1d; stroke: #ff8a80; }
+      .boxu  { fill: #14161a; stroke: #4a5361; }
+      .name  { fill: #e8e8e8; }
+      .path  { fill: #9a9a9a; }
+      .alab  { fill: #e8e8e8; }
+      .note  { fill: #9a9a9a; }
+      .proto { fill: #e8e8e8; }
+      .to    { stroke: #ff8a80; fill: none; }
+      .fr    { stroke: #9aaed6; fill: none; }
+      .ht    { fill: #ff8a80; }
+      .hf    { fill: #9aaed6; }
+    }
+  </style>
+
+  <defs>
+    <marker id="ht" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="ht" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+    <marker id="hf" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hf" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="372"/>
+
+  <text class="ttl" x="24" y="30">The client sits at the center</text>
+  <text class="sub" x="24" y="52">Ollama does not speak MCP, and has no link to the MCP server (schematic)</text>
+
+  <rect class="boxu" x="320" y="78" width="158" height="44" rx="6"/>
+  <text class="name" x="399" y="106" text-anchor="middle">User</text>
+  <line class="to" x1="370" y1="126" x2="370" y2="174" marker-end="url(#ht)"/>
+  <text class="alab" x="364" y="152" text-anchor="end">(1) question</text>
+  <line class="fr" x1="434" y1="174" x2="434" y2="126" marker-end="url(#hf)"/>
+  <text class="alab" x="442" y="152">(8) answer</text>
+
+  <rect class="boxo" x="14" y="180" width="156" height="130" rx="6"/>
+  <text class="name" x="30" y="210">Ollama</text>
+  <text class="note" x="30" y="236">a separate container</text>
+  <text class="note" x="30" y="262">does not speak MCP</text>
+  <text class="note" x="30" y="288">called twice</text>
+
+  <rect class="box" x="320" y="180" width="158" height="130" rx="6"/>
+  <text class="name" x="336" y="210">Client</text>
+  <text class="path" x="336" y="232">src/client/main.py</text>
+  <text class="note" x="336" y="258">talks to both</text>
+  <text class="note" x="336" y="278">converts the tool</text>
+  <text class="note" x="336" y="296">definitions for Ollama</text>
+
+  <rect class="box" x="620" y="180" width="146" height="130" rx="6"/>
+  <text class="name" x="634" y="210">MCP server</text>
+  <text class="path" x="634" y="232">src/server/main.py</text>
+  <text class="note" x="634" y="262">a child process</text>
+  <text class="note" x="634" y="288">&#8594; ChromaDB</text>
+
+  <line class="to" x1="314" y1="202" x2="176" y2="202" marker-end="url(#ht)"/>
+  <text class="alab" x="245" y="196" text-anchor="middle">(2) question + tools</text>
+  <line class="fr" x1="176" y1="228" x2="314" y2="228" marker-end="url(#hf)"/>
+  <text class="alab" x="245" y="222" text-anchor="middle">(3) tool_calls</text>
+  <line class="to" x1="314" y1="262" x2="176" y2="262" marker-end="url(#ht)"/>
+  <text class="alab" x="245" y="256" text-anchor="middle">(6) results + question</text>
+  <line class="fr" x1="176" y1="288" x2="314" y2="288" marker-end="url(#hf)"/>
+  <text class="alab" x="245" y="282" text-anchor="middle">(7) the answer</text>
+  <line class="to" x1="484" y1="214" x2="614" y2="214" marker-end="url(#ht)"/>
+  <text class="alab" x="549" y="208" text-anchor="middle">(4) tools/call</text>
+  <line class="fr" x1="614" y1="268" x2="484" y2="268" marker-end="url(#hf)"/>
+  <text class="alab" x="549" y="262" text-anchor="middle">(5) search results</text>
+
+  <text class="proto" x="245" y="306" text-anchor="middle">HTTP / JSON</text>
+  <text class="proto" x="549" y="306" text-anchor="middle">stdio / JSON-RPC</text>
+
+  <text class="sub" x="24" y="352">Solid is a send, dashed is a reply. Ollama is called twice, at (2) and (6).</text>
+</svg>

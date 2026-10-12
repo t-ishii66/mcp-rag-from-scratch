@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# uv
+# uv.lock は追跡する。環境ごとに解決結果が変わると、
+# 教材で「手元では動くのに動かない」が起きるため。
+
+# ChromaDB data
+chroma_db/
+
+# mkdocs のビルド成果物
+site/
+
+# Claude Code
+.claude/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ローカル専用の作業ファイル
+.local/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample
+
+# レビュー結果（ローカルに残すが、コミットはしない）
+PROBLEMS.md
+*PROBLEMS*.md
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Linter / type checker cache
+.ruff_cache/
+.mypy_cache/
+
+# Logs
+*.log
+
+# .python-version is tracked on purpose: it pins the interpreter the same way
+# uv.lock pins the packages. Without it uv takes the newest CPython available.

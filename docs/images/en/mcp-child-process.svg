@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 560"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="The client starts the server as a child process, and the server exits by itself once the connection closes - the three states">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 19px; font-weight: 600; }
+    .sub   { fill: #6b6b6b; font-size: 12px; }
+    .step  { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .lbl   { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .mono  { fill: #2a2a2a; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .monod { fill: #6b6b6b; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .proc  { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .gone  { fill: none; stroke: #b6b6b6; stroke-width: 1.4; stroke-dasharray: 5 4; }
+    .inner { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1; }
+    .send  { stroke: #b3261e; stroke-width: 2; fill: none; }
+    .recv  { stroke: #5b6b8c; stroke-width: 2; fill: none; }
+    .err   { stroke: #9a9a9a; stroke-width: 1.4; stroke-dasharray: 4 3; fill: none; }
+    .sendt { fill: #b3261e; font-size: 12px; font-weight: 600; }
+    .recvt { fill: #5b6b8c; font-size: 12px; font-weight: 600; }
+    .hs    { fill: #b3261e; }
+    .hr    { fill: #5b6b8c; }
+    .he    { fill: #9a9a9a; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .step  { fill: #e8e8e8; }
+      .lbl   { fill: #e8e8e8; }
+      .mono  { fill: #d6d6d6; }
+      .monod { fill: #9a9a9a; }
+      .proc  { fill: #1e232b; stroke: #9aaed6; }
+      .gone  { stroke: #6a6a6a; }
+      .inner { fill: #14161a; stroke: #4a5361; }
+      .send  { stroke: #ff8a80; fill: none; }
+      .recv  { stroke: #9aaed6; fill: none; }
+      .err   { stroke: #6a6a6a; fill: none; }
+      .sendt { fill: #ff8a80; }
+      .recvt { fill: #9aaed6; }
+      .hs    { fill: #ff8a80; }
+      .hr    { fill: #9aaed6; }
+      .he    { fill: #6a6a6a; }
+    }
+  </style>
+
+  <defs>
+    <marker id="chs" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hs" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+    <marker id="chr" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hr" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+    <marker id="che" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="he" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="560"/>
+
+  <text class="ttl" x="24" y="30">The client starts the server, and it goes away when the client does</text>
+  <text class="sub" x="24" y="52">The three states when steps/03_mcp_sdk.py runs (schematic)</text>
+
+  <text class="step" x="24" y="88">(1) just after running it - there is no server process yet</text>
+
+  <rect class="proc" x="24" y="98" width="270" height="76" rx="6"/>
+  <text class="lbl"   x="40" y="122">Client</text>
+  <text class="mono"  x="40" y="144">SERVER = StdioServerParameters(...)</text>
+  <text class="sub"   x="40" y="164">it only holds the command to start it</text>
+
+  <rect class="gone" x="486" y="98" width="270" height="76" rx="6"/>
+  <text class="sub" x="621" y="136" text-anchor="middle">Server</text>
+  <text class="sub" x="621" y="154" text-anchor="middle">not started yet</text>
+
+  <text class="step" x="24" y="210">(2) async with stdio_client(SERVER) - start it as a child process and wire up the pipes</text>
+
+  <rect class="proc" x="24" y="220" width="270" height="120" rx="6"/>
+  <text class="lbl"   x="40" y="246">Client (parent process)</text>
+  <text class="monod" x="40" y="264">steps/03_mcp_sdk.py</text>
+  <rect class="inner" x="40" y="274" width="238" height="58" rx="4"/>
+  <text class="mono" x="52" y="294">session.initialize()</text>
+  <text class="mono" x="52" y="310">session.list_tools()</text>
+  <text class="mono" x="52" y="326">session.call_tool(...)</text>
+
+  <rect class="proc" x="486" y="220" width="270" height="120" rx="6"/>
+  <text class="lbl"   x="502" y="246">Server (child process)</text>
+  <text class="monod" x="502" y="264">uv run python -m server.main</text>
+  <rect class="inner" x="502" y="274" width="238" height="58" rx="4"/>
+  <text class="mono" x="514" y="296">search(query, top_k)</text>
+  <text class="mono" x="514" y="318">  -&gt; ChromaDB</text>
+
+  <line class="send" x1="300" y1="258" x2="480" y2="258" marker-end="url(#chs)"/>
+  <text class="sendt" x="390" y="248" text-anchor="middle">write a line to its stdin</text>
+
+  <line class="recv" x1="480" y1="300" x2="300" y2="300" marker-end="url(#chr)"/>
+  <text class="recvt" x="390" y="290" text-anchor="middle">read a line from its stdout</text>
+
+  <text class="sub" x="390" y="328" text-anchor="middle">a newline ends one message</text>
+
+  <line class="err" x1="621" y1="340" x2="621" y2="362" marker-end="url(#che)"/>
+  <text class="sub" x="756" y="380" text-anchor="end">stderr is thrown away, not shown (errlog=DEVNULL)</text>
+
+  <text class="step" x="24" y="416">(3) leaving the async with - closing the pipe is the signal to stop</text>
+
+  <rect class="proc" x="24" y="426" width="270" height="74" rx="6"/>
+  <text class="lbl"  x="40" y="452">Client</text>
+  <text class="sub"  x="40" y="474">closes the pipe</text>
+
+  <line class="err" x1="300" y1="462" x2="480" y2="462" marker-end="url(#che)"/>
+  <text class="sub" x="390" y="452" text-anchor="middle">EOF</text>
+
+  <rect class="gone" x="486" y="426" width="270" height="74" rx="6"/>
+  <text class="sub" x="621" y="458" text-anchor="middle">Server</text>
+  <text class="sub" x="621" y="476" text-anchor="middle">it gets EOF and exits on its own</text>
+
+  <text class="sub" x="24" y="534">Just run the client. There is no need to start the server in another terminal first.</text>
+</svg>

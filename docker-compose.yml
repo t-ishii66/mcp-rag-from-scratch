@@ -1,0 +1,63 @@
+# Test environment
+#
+#   docker compose up -d              # start
+#   docker compose exec app bash      # get a shell
+#   docker compose exec app uv run pytest
+#   docker compose down               # stop
+#
+# On macOS the Apple Silicon GPU cannot be passed to a container, so ollama
+# runs on the CPU here.
+
+services:
+  # Ubuntu + Python + uv. The code runs in here.
+  app:
+    build: .
+    volumes:
+      # Edits on the host show up in the container
+      - .:/workspace
+      # Cache for the embedding model (~470MB), so it downloads once
+      - hf-cache:/opt/hf-cache
+      # Keep ChromaDB outside /workspace. Inside the bind mount, files made by
+      # root in the container stay on the host owned by root, and on Linux you
+      # then need sudo to delete them.
+      - chroma-db:/opt/chroma_db
+    environment:
+      # The ollama service by default. To use Ollama on the host, set this in .env:
+      #   OLLAMA_HOST=http://host.docker.internal:11434
+      OLLAMA_HOST: ${OLLAMA_HOST:-http://ollama:11434}
+      # Which model to run. Override in .env:
+      #   OLLAMA_MODEL=qwen3:4b
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:1.7b}
+      # Matches the volume above. config.py reads this.
+      RAG_CHROMA_PATH: /opt/chroma_db
+      # Quiet the "unauthenticated requests to the HF Hub" notice.
+      HF_HUB_VERBOSITY: error
+      # Same reason: keep __pycache__ and .pytest_cache off the host.
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTEST_ADDOPTS: "-p no:cacheprovider"
+    extra_hosts:
+      # So host.docker.internal reaches the host on Linux too
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - ollama
+    stdin_open: true
+    tty: true
+    # Keep it running so we can attach to it
+    command: sleep infinity
+
+  # Ollama. Models live in a named volume and survive a rebuild.
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-models:/root/.ollama
+    # No published port. app reaches it at ollama:11434.
+    # Publishing 11434 clashes with an Ollama already running on the host, and
+    # Docker then starts the container with no network instead of failing.
+    # Enable this only to call the API from the host:
+    #   ports:
+    #     - "11434:11434"
+
+volumes:
+  hf-cache:
+  ollama-models:
+  chroma-db:

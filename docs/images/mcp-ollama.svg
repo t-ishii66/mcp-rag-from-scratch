@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 372"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="クライアントが中心となり、Ollama とは HTTP で JSON を、MCP サーバーとは stdio で JSON-RPC をやりとりする">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 19px; font-weight: 600; }
+    .sub   { fill: #6b6b6b; font-size: 12px; }
+    .box   { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .boxo  { fill: #fbeeed; stroke: #d08c86; stroke-width: 1.4; }
+    .boxu  { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1.4; }
+    .name  { fill: #1a1a1a; font-size: 14px; font-weight: 600; }
+    .path  { fill: #6b6b6b; font-size: 11px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .alab  { fill: #1a1a1a; font-size: 11px; }
+    .note  { fill: #6b6b6b; font-size: 11px; }
+    .proto { fill: #1a1a1a; font-size: 11.5px; font-weight: 600; }
+    .to    { stroke: #b3261e; stroke-width: 1.8; fill: none; }
+    .fr    { stroke: #5b6b8c; stroke-width: 1.8; stroke-dasharray: 5 3; fill: none; }
+    .ht    { fill: #b3261e; }
+    .hf    { fill: #5b6b8c; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .box   { fill: #1e232b; stroke: #9aaed6; }
+      .boxo  { fill: #2a1d1d; stroke: #ff8a80; }
+      .boxu  { fill: #14161a; stroke: #4a5361; }
+      .name  { fill: #e8e8e8; }
+      .path  { fill: #9a9a9a; }
+      .alab  { fill: #e8e8e8; }
+      .note  { fill: #9a9a9a; }
+      .proto { fill: #e8e8e8; }
+      .to    { stroke: #ff8a80; fill: none; }
+      .fr    { stroke: #9aaed6; fill: none; }
+      .ht    { fill: #ff8a80; }
+      .hf    { fill: #9aaed6; }
+    }
+  </style>
+
+  <defs>
+    <marker id="ht" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="ht" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+    <marker id="hf" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hf" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="372"/>
+
+  <text class="ttl" x="24" y="30">クライアントが中心にいる</text>
+  <text class="sub" x="24" y="52">Ollama は MCP を話さない。MCP サーバーとも繋がっていない（模式図）</text>
+
+  <rect class="boxu" x="324" y="78" width="150" height="44" rx="6"/>
+  <text class="name" x="399" y="106" text-anchor="middle">ユーザ</text>
+  <line class="to" x1="370" y1="126" x2="370" y2="174" marker-end="url(#ht)"/>
+  <text class="alab" x="364" y="152" text-anchor="end">① 質問</text>
+  <line class="fr" x1="434" y1="174" x2="434" y2="126" marker-end="url(#hf)"/>
+  <text class="alab" x="442" y="152">⑧ 答え</text>
+
+  <rect class="boxo" x="14" y="180" width="180" height="130" rx="6"/>
+  <text class="name" x="30" y="210">Ollama</text>
+  <text class="note" x="30" y="236">別コンテナ</text>
+  <text class="note" x="30" y="262">MCP は話さない</text>
+  <text class="note" x="30" y="288">2回呼ばれる</text>
+
+  <rect class="box" x="314" y="180" width="170" height="130" rx="6"/>
+  <text class="name" x="330" y="210">クライアント</text>
+  <text class="path" x="330" y="232">src/client/main.py</text>
+  <text class="note" x="330" y="258">両方と話す</text>
+  <text class="note" x="330" y="278">ツール定義を</text>
+  <text class="note" x="330" y="296">Ollama 形式に変換</text>
+
+  <rect class="box" x="604" y="180" width="162" height="130" rx="6"/>
+  <text class="name" x="618" y="210">MCP サーバー</text>
+  <text class="path" x="618" y="232">src/server/main.py</text>
+  <text class="note" x="618" y="262">子プロセス</text>
+  <text class="note" x="618" y="288">→ ChromaDB</text>
+
+  <line class="to" x1="308" y1="202" x2="200" y2="202" marker-end="url(#ht)"/>
+  <text class="alab" x="254" y="196" text-anchor="middle">② 質問 + ツール定義</text>
+  <line class="fr" x1="200" y1="228" x2="308" y2="228" marker-end="url(#hf)"/>
+  <text class="alab" x="254" y="222" text-anchor="middle">③ tool_calls</text>
+  <line class="to" x1="308" y1="262" x2="200" y2="262" marker-end="url(#ht)"/>
+  <text class="alab" x="254" y="256" text-anchor="middle">⑥ 検索結果 + 質問</text>
+  <line class="fr" x1="200" y1="288" x2="308" y2="288" marker-end="url(#hf)"/>
+  <text class="alab" x="254" y="282" text-anchor="middle">⑦ 答え</text>
+  <line class="to" x1="490" y1="214" x2="598" y2="214" marker-end="url(#ht)"/>
+  <text class="alab" x="544" y="208" text-anchor="middle">④ tools/call</text>
+  <line class="fr" x1="598" y1="268" x2="490" y2="268" marker-end="url(#hf)"/>
+  <text class="alab" x="544" y="262" text-anchor="middle">⑤ 検索結果</text>
+
+  <text class="proto" x="254" y="306" text-anchor="middle">HTTP / JSON</text>
+  <text class="proto" x="544" y="306" text-anchor="middle">stdio / JSON-RPC</text>
+
+  <text class="sub" x="24" y="352">実線が送信、破線が応答。Ollama は②と⑥の2回呼ばれる。</text>
+</svg>

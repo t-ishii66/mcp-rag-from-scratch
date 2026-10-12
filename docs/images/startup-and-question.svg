@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 548"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="起動時はクライアントと MCP サーバーだけがやりとりし、質問のたびにユーザ・Ollama・MCP サーバーとの8つのやりとりが起きる">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 13px; font-weight: 600; }
+    .box   { fill: #f2f4f8; stroke: #9aa7bf; stroke-width: 1.4; }
+    .boxo  { fill: #fbeeed; stroke: #d08c86; stroke-width: 1.4; }
+    .boxu  { fill: #ffffff; stroke: #c3ccdb; stroke-width: 1.4; }
+    .name  { fill: #1a1a1a; font-size: 14.5px; font-weight: 600; }
+    .life  { stroke: #c3ccdb; stroke-width: 1.2; stroke-dasharray: 4 4; }
+    .alab  { fill: #1a1a1a; font-size: 11px; }
+    .note  { fill: #6b6b6b; font-size: 11px; }
+    .toM   { stroke: #5b6b8c; stroke-width: 1.8; fill: none; }
+    .frM   { stroke: #5b6b8c; stroke-width: 1.8; fill: none; stroke-dasharray: 5 3; }
+    .toO   { stroke: #b3261e; stroke-width: 1.8; fill: none; }
+    .frO   { stroke: #b3261e; stroke-width: 1.8; fill: none; stroke-dasharray: 5 3; }
+    .hM    { fill: #5b6b8c; }
+    .hO    { fill: #b3261e; }
+    .sep   { stroke: #c3ccdb; stroke-width: 1; stroke-dasharray: 3 4; }
+    .lbl   { fill: #ffffff; stroke: #1a1a1a; stroke-width: 1.2; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .box   { fill: #1e232b; stroke: #9aaed6; }
+      .boxo  { fill: #2a1d1d; stroke: #ff8a80; }
+      .boxu  { fill: #14161a; stroke: #4a5361; }
+      .name  { fill: #e8e8e8; }
+      .life  { stroke: #4a5361; }
+      .alab  { fill: #e8e8e8; }
+      .note  { fill: #9a9a9a; }
+      .toM   { stroke: #9aaed6; }
+      .frM   { stroke: #9aaed6; }
+      .toO   { stroke: #ff8a80; }
+      .frO   { stroke: #ff8a80; }
+      .hM    { fill: #9aaed6; }
+      .hO    { fill: #ff8a80; }
+      .sep   { stroke: #4a5361; }
+      .lbl   { fill: #14161a; stroke: #e8e8e8; }
+    }
+  </style>
+
+  <defs>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hM" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+    <marker id="o" markerWidth="8" markerHeight="8" refX="6.5" refY="2.8" orient="auto" markerUnits="strokeWidth">
+      <path class="hO" d="M0,0 L6.5,2.8 L0,5.6 z"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="548"/>
+
+  <!-- ===== 登場人物 ===== -->
+  <rect class="boxu" x="10" y="18" width="140" height="48" rx="6"/>
+  <text class="name" x="80" y="48" text-anchor="middle">ユーザ</text>
+  <rect class="box" x="186" y="18" width="168" height="48" rx="6"/>
+  <text class="name" x="270" y="48" text-anchor="middle">クライアント</text>
+  <rect class="boxo" x="396" y="18" width="148" height="48" rx="6"/>
+  <text class="name" x="470" y="48" text-anchor="middle">Ollama</text>
+  <rect class="box" x="590" y="18" width="180" height="48" rx="6"/>
+  <text class="name" x="680" y="48" text-anchor="middle">MCP サーバー</text>
+
+  <line class="life" x1="80"  y1="66" x2="80"  y2="500"/>
+  <line class="life" x1="270" y1="66" x2="270" y2="500"/>
+  <line class="life" x1="470" y1="66" x2="470" y2="500"/>
+  <line class="life" x1="680" y1="66" x2="680" y2="500"/>
+
+  <!-- ===== 起動時 ===== -->
+  <rect class="lbl" x="14" y="70" width="344" height="26"/>
+  <text class="ttl" x="26" y="88">起動時 — 1回だけ。MCP サーバーとしか話さない</text>
+
+  <path class="toM" d="M272,104 L676,104" marker-end="url(#m)"/>
+  <text class="alab" x="474" y="96" text-anchor="middle">initialize</text>
+
+  <path class="frM" d="M678,132 L274,132" marker-end="url(#m)"/>
+  <text class="alab" x="476" y="124" text-anchor="middle">サーバー情報・capabilities</text>
+
+  <path class="toM" d="M272,166 L676,166" marker-end="url(#m)"/>
+  <text class="alab" x="474" y="158" text-anchor="middle">tools/list</text>
+
+  <path class="frM" d="M678,194 L274,194" marker-end="url(#m)"/>
+  <text class="alab" x="476" y="186" text-anchor="middle">ツール3つの定義</text>
+
+  <rect class="boxu" x="166" y="208" width="208" height="38" rx="4"/>
+  <text class="note" x="180" y="226">Ollama 形式に変換して</text>
+  <text class="note" x="180" y="240">手元に持っておく</text>
+
+  <line class="sep" x1="14" y1="268" x2="766" y2="268"/>
+
+  <!-- ===== 質問のたび ===== -->
+  <rect class="lbl" x="14" y="276" width="252" height="26"/>
+  <text class="ttl" x="26" y="294">質問のたび — ①から⑧をくり返す</text>
+
+  <path class="toM" d="M82,322 L266,322" marker-end="url(#m)"/>
+  <text class="alab" x="174" y="314" text-anchor="middle">① 質問</text>
+
+  <path class="toO" d="M272,352 L466,352" marker-end="url(#o)"/>
+  <text class="alab" x="369" y="344" text-anchor="middle">② 質問 ＋ ツール一覧</text>
+
+  <path class="frO" d="M468,380 L274,380" marker-end="url(#o)"/>
+  <text class="alab" x="371" y="372" text-anchor="middle">③ search を呼べ</text>
+
+  <path class="toM" d="M272,410 L676,410" marker-end="url(#m)"/>
+  <text class="alab" x="474" y="402" text-anchor="middle">④ tools/call</text>
+
+  <path class="frM" d="M678,438 L274,438" marker-end="url(#m)"/>
+  <text class="alab" x="476" y="430" text-anchor="middle">⑤ 検索結果のテキスト</text>
+
+  <path class="toO" d="M272,468 L466,468" marker-end="url(#o)"/>
+  <text class="alab" x="369" y="460" text-anchor="middle">⑥ 質問 ＋ 検索結果</text>
+
+  <path class="frO" d="M468,496 L274,496" marker-end="url(#o)"/>
+  <text class="alab" x="371" y="488" text-anchor="middle">⑦ 答えの文章</text>
+
+  <path class="frM" d="M266,524 L84,524" marker-end="url(#m)"/>
+  <text class="alab" x="174" y="516" text-anchor="middle">⑧ 表示する</text>
+
+  <text class="note" x="596" y="528">実線が送信、破線が応答</text>
+</svg>

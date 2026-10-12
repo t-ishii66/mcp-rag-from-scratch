@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 466"
+     width="100%" style="max-width:780px;height:auto" role="img"
+     aria-label="Sentences with similar meaning become vectors pointing in close directions; unrelated sentences do not line up">
+  <style>
+    .bg    { fill: #ffffff; }
+    .ttl   { fill: #1a1a1a; font-size: 19px; font-weight: 600; }
+    .sub   { fill: #6b6b6b; font-size: 12px; }
+    .sent  { fill: #1a1a1a; font-size: 13px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .sentw { fill: #b3261e; font-size: 13px; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+    .vec   { stroke: #5b6b8c; stroke-width: 2; fill: none; }
+    .vecw  { stroke: #b3261e; stroke-width: 2; fill: none; }
+    .wn    { fill: #b3261e; fill-opacity: 0.14; stroke: none; }
+    .wf    { fill: #5b6b8c; fill-opacity: 0.09; stroke: none; }
+    .dot   { fill: #1a1a1a; }
+    .hd    { fill: #5b6b8c; }
+    .hdw   { fill: #b3261e; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #14161a; }
+      .ttl   { fill: #e8e8e8; }
+      .sub   { fill: #9a9a9a; }
+      .sent  { fill: #e8e8e8; }
+      .sentw { fill: #ff8a80; }
+      .vec   { stroke: #9aaed6; fill: none; }
+      .vecw  { stroke: #ff8a80; fill: none; }
+      .wn    { fill: #ff8a80; fill-opacity: 0.20; stroke: none; }
+      .wf    { fill: #9aaed6; fill-opacity: 0.13; stroke: none; }
+      .dot   { fill: #e8e8e8; }
+      .hd    { fill: #9aaed6; }
+      .hdw   { fill: #ff8a80; }
+    }
+  </style>
+
+  <defs>
+    <marker id="head" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2"
+            orient="auto" markerUnits="strokeWidth">
+      <path class="hd" d="M0,0 L7.5,3.2 L0,6.4 z"/>
+    </marker>
+    <marker id="headw" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2"
+            orient="auto" markerUnits="strokeWidth">
+      <path class="hdw" d="M0,0 L7.5,3.2 L0,6.4 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="780" height="466"/>
+
+  <text class="ttl" x="24" y="30">Close in meaning, close in direction. Unrelated, and they point apart</text>
+  <text class="sub" x="24" y="52">One sentence, one vector. All the same length, so meaning shows only as direction (schematic)</text>
+
+  <path class="wf" d="M130,290 L226.4,404.9 A150,150 0 0 1 176.4,147.3 Z"/>
+  <path class="wn" d="M130,290 L182.6,182.1 A120,120 0 0 1 167.1,175.9 Z"/>
+
+  <line class="vecw" x1="130" y1="290" x2="188.7" y2="109.3" marker-end="url(#headw)"/>
+  <line class="vecw" x1="130" y1="290" x2="213.3" y2="119.2" marker-end="url(#headw)"/>
+  <line class="vec" x1="130" y1="290" x2="275.5" y2="167.9" marker-end="url(#head)"/>
+  <line class="vec" x1="130" y1="290" x2="319.0" y2="309.9" marker-end="url(#head)"/>
+  <line class="vec" x1="130" y1="290" x2="252.1" y2="435.5" marker-end="url(#head)"/>
+
+  <circle class="dot" cx="130" cy="290" r="4"/>
+  <text class="sub" x="120" y="295" text-anchor="end">origin</text>
+
+  <text class="sentw" x="205" y="92">I want a hot drink</text>
+  <text class="sentw" x="228" y="124">Hot coffee on a cold day</text>
+  <text class="sent" x="290" y="172">We also serve iced coffee</text>
+  <text class="sent" x="333" y="314">Where can I leave my bike?</text>
+  <text class="sent" x="266" y="440">The oven is broken</text>
+</svg>
