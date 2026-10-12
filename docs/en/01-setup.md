@@ -1,3 +1,9 @@
+---
+title: "What you need and installing Docker"
+description: "Everything in this project — running it and testing it — happens inside a Docker Ubuntu 24.04 container. This chapter covers only checking the resources you nee…"
+lang: en
+---
+
 # What you need and installing Docker
 
 ![An illustration of Alice and Bob, two children, playing happily](../images/alice-bob.png)
@@ -35,10 +41,12 @@ Step 1 through Step 3 do not use the LLM, so the `ollama` image and the model
 
 Checking the current allocation.
 
+{% raw %}
 ```bash
 docker info --format 'Memory: {{.MemTotal}}'
 df -h /
 ```
+{% endraw %}
 
 ## On an underpowered machine, this is what hurts
 

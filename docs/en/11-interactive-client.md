@@ -1,3 +1,9 @@
+---
+title: "Running the finished version interactively"
+description: "This is the final chapter. The four scripts in steps/ were each a script with one question embedded in it. In src/ there is a finished version that does the sam…"
+lang: en
+---
+
 # Running the finished version interactively
 
 This is the final chapter. The four scripts in `steps/` were each a script with one question embedded in it.

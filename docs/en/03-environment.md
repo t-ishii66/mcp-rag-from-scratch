@@ -1,3 +1,9 @@
+---
+title: "Setting up a working environment"
+description: "Let's get the environment for running this project in order, and confirm that it works."
+lang: en
+---
+
 # Setting up a working environment
 
 ![Alice and Bob sorting toys into boxes](../images/alice-bob-sorting-toys.png)

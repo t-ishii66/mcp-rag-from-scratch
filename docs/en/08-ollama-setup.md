@@ -1,3 +1,9 @@
+---
+title: "Setting up Ollama"
+description: "Ollama is already in docker-compose.yml. No installation is needed. All there is to do is download one model."
+lang: en
+---
+
 # Setting up Ollama
 
 ![Alice and Bob preparing the things for a picnic together](../images/alice-bob-picnic-preparation.png)

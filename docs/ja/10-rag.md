@@ -1,3 +1,9 @@
+---
+title: "RAG を完成させる"
+description: "最後の部品を載せる。ここまでは検索して取り出すところまでだった。 取り出した文書を LLM に渡し、答えを書かせる。"
+lang: ja
+---
+
 # RAG を完成させる
 
 ![花の図鑑を見ながら観察ノートを描く Alice と Bob](../images/alice-bob-nature-journal.png)

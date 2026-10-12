@@ -1,3 +1,8 @@
+---
+title: "MCP RAG from scratch — MCP と RAG を自分で書いて理解する"
+description: "MCP を自分で書いて理解するハンズオン教材。クライアントもサーバーも自作し、生の JSON-RPC から ChromaDB とローカル LLM を使った RAG まで積み上げる。すべてローカルで完結し API キーは不要。"
+lang: ja
+---
 ![MCP RAG from scratch](docs/images/top.png)
 
 # MCP RAG from scratch
@@ -5,6 +10,12 @@
 [English](README.md) · **日本語**
 
 **MCP と RAG を自分で書いて、仕組みを理解する**ためのハンズオン教材です。
+
+<!-- SEO intro added by setup-github-pages; review and adjust -->
+
+「**MCP サーバーを自分で書いてみたい**」「**Model Context Protocol** が実際に何をやりとりしているのか知りたい」「**RAG** を小さくて本物の例で学びたい」 ── そんな人のための教材です。扱うテーマは **JSON-RPC**、**ツール呼び出し**、**ChromaDB** によるベクトル検索、**Ollama** で動かすローカル LLM など。
+
+<!-- /SEO intro -->
 
 MCP 対応のツールを使ったことはあっても、中で何が起きているかは見えません。
 このプロジェクトでは、クライアントもサーバーも自分で書きます。

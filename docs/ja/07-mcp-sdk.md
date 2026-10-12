@@ -1,3 +1,9 @@
+---
+title: "MCP を SDK で書く"
+description: "前章では、4つのやりとりを JSON-RPC のまま追った。同じことを公式 SDK で書く。"
+lang: ja
+---
+
 # MCP を SDK で書く
 
 ![積み木のお城を一緒に作る Alice と Bob](../images/alice-bob-building-blocks.png)

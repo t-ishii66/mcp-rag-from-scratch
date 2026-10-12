@@ -1,3 +1,9 @@
+---
+title: "Running ChromaDB"
+description: "It is a vector database. Hand it a string, and it converts it into 'a sequence of numbers that expresses meaning', that is, a vector, and stores it; hand it a q…"
+lang: en
+---
+
 # Running ChromaDB
 
 ![Alice and Bob playing with a paper plane](../images/alice-bob-paper-plane.png)

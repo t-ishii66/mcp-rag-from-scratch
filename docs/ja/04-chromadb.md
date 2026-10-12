@@ -1,3 +1,9 @@
+---
+title: "ChromaDB を動かす"
+description: "ベクトルデータベースである。文字列を渡すと「意味を表す数値の並び」、つまり ベクトルに変換して保存し、質問を渡すと近い順に返す。"
+lang: ja
+---
+
 # ChromaDB を動かす
 
 ![紙飛行機で遊ぶ Alice と Bob](../images/alice-bob-paper-plane.png)

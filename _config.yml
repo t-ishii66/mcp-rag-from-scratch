@@ -1,0 +1,58 @@
+title: "MCP RAG from scratch"
+description: >-
+  A free, open-source course on understanding the Model Context Protocol
+  (MCP) by writing it yourself. Build an MCP server and an MCP client by
+  hand, from raw JSON-RPC 2.0 over standard input and output up to a
+  working RAG (retrieval-augmented generation) loop driven by a local LLM.
+  Covers the MCP handshake (initialize, tools/list, tools/call), the stdio
+  transport, tool definitions and tool calling, the official MCP Python
+  SDK, ChromaDB as a vector database, multilingual sentence embeddings,
+  and Ollama for running a model locally. Everything runs on your own
+  machine; no API key is needed. Available in English and Japanese.
+  Keywords: MCP tutorial, Model Context Protocol, build your own MCP
+  server, MCP client, JSON-RPC, RAG from scratch, retrieval augmented
+  generation, ChromaDB, vector search, embeddings, Ollama, local LLM,
+  tool calling, Python, Docker.
+
+url: "https://t-ishii66.github.io"
+baseurl: "/mcp-rag-from-scratch"
+repository: t-ishii66/mcp-rag-from-scratch
+
+theme: jekyll-theme-cayman
+
+author: t-ishii66
+lang: en
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Keep these out of the published site
+exclude:
+  - "*.bak"
+  - PROBLEMS.md
+  - "*PROBLEMS*.md"
+  - CLAUDE.md
+  - src/
+  - steps/
+  - tests/
+  - tools/
+  - data/
+  - chroma_db/
+  - .github/
+  - .gitignore
+  - .dockerignore
+  - .python-version
+  - Dockerfile
+  - docker-compose.yml
+  - pyproject.toml
+  - uv.lock
+  - .venv/
+  - .vscode/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  # Without this, kramdown turns '--format' into an en dash on Pages.
+  gfm_quirks: [paragraph_end, no_auto_typographic]

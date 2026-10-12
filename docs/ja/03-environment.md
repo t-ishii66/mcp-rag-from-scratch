@@ -1,3 +1,9 @@
+---
+title: "動く環境を用意する"
+description: "このプロジェクトを動かす環境を整え、動くことを確かめる。"
+lang: ja
+---
+
 # 動く環境を用意する
 
 ![おもちゃを箱に仕分ける Alice と Bob](../images/alice-bob-sorting-toys.png)

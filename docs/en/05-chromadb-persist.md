@@ -1,3 +1,9 @@
+---
+title: "Building the database and preparing a search function"
+description: "The database in the previous chapter was in memory. It disappears when the run finishes, so it was re-vectorizing the 7 files every time it started."
+lang: en
+---
+
 # Building the database and preparing a search function
 
 ![Alice and Bob playing with paper boats on the water](../images/alice-bob-paper-boats.png)
@@ -214,7 +220,7 @@ query> opening hours
 It says `Using the existing ChromaDB`. It has not rebuilt anything.
 The only thing being vectorized is the query you are about to type.
 
-The default is 1 item. Add ` /number` at the end to increase it (`opening hours /3`).
+The default is 1 item. Add ` /number` at the end to increase it (`opening hours /3`).
 `quit` exits.
 
 ### "No match" never comes back

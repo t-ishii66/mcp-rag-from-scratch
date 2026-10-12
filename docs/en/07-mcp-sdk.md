@@ -1,3 +1,9 @@
+---
+title: "Writing MCP with the SDK"
+description: "In the previous chapter we followed the four exchanges as raw JSON-RPC. Let's write the same thing with the official SDK."
+lang: en
+---
+
 # Writing MCP with the SDK
 
 ![Alice and Bob building a block castle together](../images/alice-bob-building-blocks.png)

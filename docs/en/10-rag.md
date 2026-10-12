@@ -1,3 +1,9 @@
+---
+title: "Completing RAG"
+description: "Let's put the last part on. Up to here, it went as far as searching and taking things out. We hand the retrieved documents to the LLM and have it write the answ…"
+lang: en
+---
+
 # Completing RAG
 
 ![Alice and Bob drawing an observation journal while looking at a flower guide](../images/alice-bob-nature-journal.png)

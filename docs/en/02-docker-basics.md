@@ -1,3 +1,9 @@
+---
+title: "Docker primer"
+description: "In the previous chapter Docker started working. This chapter covers the ideas behind Docker itself. If you are used to Docker, you may skip it and move on to Se…"
+lang: en
+---
+
 # Docker primer
 
 ![Alice and Bob playing with soap bubbles](../images/alice-bob-bubbles.png)
@@ -123,6 +129,7 @@ so booting takes time and it reserves memory as well. A container has none of th
 Start one `sleep 300` process and **look up its PID (process number)
 in two places: inside the container and on the host side.** The thing being looked up is the same single process.
 
+{% raw %}
 ```bash
 docker run -d --name demo ubuntu:24.04 sleep 300
 
@@ -130,6 +137,7 @@ docker run -d --name demo ubuntu:24.04 sleep 300
 docker exec demo ps -ef                    # the PID inside the container
 docker inspect -f '{{.State.Pid}}' demo    # the PID on the host side
 ```
+{% endraw %}
 
 The first, `docker exec`, is typed on the host but
 executed inside the container.
@@ -332,9 +340,11 @@ uid=0(root) gid=0(root) groups=0(root),...
 Inside the container it is UID 0, that is, root.
 So what is this process from the host's point of view?
 
+{% raw %}
 ```bash
 ps -o uid=,pid=,cmd= -p $(docker inspect -f '{{.State.Pid}}' demo)
 ```
+{% endraw %}
 
 ```
     0   39484 sleep 300
@@ -348,11 +358,13 @@ It does not get remapped to a different value.
 
 Change it with `--user`, and that goes through as it is too.
 
+{% raw %}
 ```bash
 docker run -d --name demo2 --user 1000 alpine:3.20 sleep 300
 docker exec demo2 id         # uid=1000
 ps -o uid= -p $(docker inspect -f '{{.State.Pid}}' demo2)
 ```
+{% endraw %}
 
 ```
  1000
@@ -448,9 +460,11 @@ The tag points to a version. Omit it and it becomes `latest`, but
 
 There are several images for OSes alone, and their sizes differ.
 
+{% raw %}
 ```bash
 docker images --format "{{.Repository}}:{{.Tag}}\t{{.Size}}"
 ```
+{% endraw %}
 
 The ones you have already downloaded are listed. Picking out the four touched on in this chapter, it looks like this.
 
@@ -507,9 +521,11 @@ How to do that is covered in the second half.
 
 An image is not a monolith. It is a collection of layers with changes stacked up.
 
+{% raw %}
 ```bash
 docker history ubuntu:24.04 --format "{{.Size}}\t{{.CreatedBy}}"
 ```
+{% endraw %}
 
 ```
 0B	/bin/sh -c #(nop)  CMD ["/bin/bash"]
@@ -596,9 +612,11 @@ In an actual `Dockerfile`, the following three are also often used.
 
 Looking at the layers that were created, you can see them stacked in the order written.
 
+{% raw %}
 ```bash
 docker history primer-demo --format "{{.Size}}\t{{.CreatedBy}}"
 ```
+{% endraw %}
 
 ```
 0B	CMD ["/usr/games/cowsay" "Hello"]              ← the CMD we wrote ourselves
@@ -616,9 +634,11 @@ Only three lines are written in the `Dockerfile`, yet there are 7 layers.
 **The bottom 5 layers belong to the `ubuntu:24.04` specified in `FROM`.**
 Comparing makes it clear.
 
+{% raw %}
 ```bash
 docker history ubuntu:24.04 --format "{{.Size}}\t{{.CreatedBy}}"
 ```
+{% endraw %}
 
 ```
 0B	/bin/sh -c #(nop)  CMD ["/bin/bash"]
@@ -906,9 +926,11 @@ write only `${...}` in the `docker-compose.yml` and put the values in `.env`.
 
 The startup order is visible too.
 
+{% raw %}
 ```bash
 docker compose ps --format '{{.Service}}\t{{.Status}}'
 ```
+{% endraw %}
 
 ```
 client	Up 1 second

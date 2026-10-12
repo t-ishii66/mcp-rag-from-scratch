@@ -1,3 +1,9 @@
+---
+title: "必要な環境と Docker の導入"
+description: "このプロジェクトの実行と試験は、すべて Docker の Ubuntu 24.04 コンテナ内で行う。 この章で扱うのは、必要なリソースの確認と Docker の導入まで。 プロジェクトのビルドと起動は 動く環境を用意す…"
+lang: ja
+---
+
 # 必要な環境と Docker の導入
 
 ![Alice と Bob、2人の子どもが楽しそうに遊んでいるイラスト](../images/alice-bob.png)
@@ -35,10 +41,12 @@ Step 1 から Step 3 までは LLM を使わないため、`ollama` のイメー
 
 現在の割り当ての確認。
 
+{% raw %}
 ```bash
 docker info --format 'メモリ: {{.MemTotal}}'
 df -h /
 ```
+{% endraw %}
 
 ## 非力なマシンでは、ここが重い
 

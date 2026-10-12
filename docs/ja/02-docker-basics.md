@@ -1,3 +1,9 @@
+---
+title: "Docker 入門"
+description: "前章で Docker が動作するようになった。この章では、Docker そのものの考え方を扱う。 Docker に慣れているなら、飛ばして 動く環境を用意する へ進んでよい。"
+lang: ja
+---
+
 # Docker 入門
 
 ![シャボン玉で遊ぶ Alice と Bob](../images/alice-bob-bubbles.png)
@@ -123,6 +129,7 @@ done
 `sleep 300` のプロセスを1つ起動し、その **PID（プロセス番号）を
 コンテナの中とホスト側の2か所で調べる。** 調べる対象は同じ1つのプロセスである。
 
+{% raw %}
 ```bash
 docker run -d --name demo ubuntu:24.04 sleep 300
 
@@ -130,6 +137,7 @@ docker run -d --name demo ubuntu:24.04 sleep 300
 docker exec demo ps -ef                    # コンテナの中での PID
 docker inspect -f '{{.State.Pid}}' demo    # ホスト側での PID
 ```
+{% endraw %}
 
 1つ目の `docker exec` は、打つのはホストだが、
 実行されるのはコンテナの中である。
@@ -332,9 +340,11 @@ uid=0(root) gid=0(root) groups=0(root),...
 コンテナの中では UID 0、つまり root である。
 では、このプロセスはホストから見て何者なのか。
 
+{% raw %}
 ```bash
 ps -o uid=,pid=,cmd= -p $(docker inspect -f '{{.State.Pid}}' demo)
 ```
+{% endraw %}
 
 ```
     0   39484 sleep 300
@@ -348,11 +358,13 @@ PID はコンテナとホストで別の値になったのに、UID は同じ値
 
 `--user` で変えれば、それもそのまま通る。
 
+{% raw %}
 ```bash
 docker run -d --name demo2 --user 1000 alpine:3.20 sleep 300
 docker exec demo2 id         # uid=1000
 ps -o uid= -p $(docker inspect -f '{{.State.Pid}}' demo2)
 ```
+{% endraw %}
 
 ```
  1000
@@ -448,9 +460,11 @@ docker.io  /  library  /  debian  :  12-slim
 
 OS のイメージだけでも複数あり、大きさが違う。
 
+{% raw %}
 ```bash
 docker images --format "{{.Repository}}:{{.Tag}}\t{{.Size}}"
 ```
+{% endraw %}
 
 手元に取得済みのものが並ぶ。この章で触れた4つを抜き出すと、こうなる。
 
@@ -507,9 +521,11 @@ docker run --rm ubuntu:24.04 ls /tmp/
 
 イメージは1枚岩ではない。変更を積み重ねた層の集まりである。
 
+{% raw %}
 ```bash
 docker history ubuntu:24.04 --format "{{.Size}}\t{{.CreatedBy}}"
 ```
+{% endraw %}
 
 ```
 0B	/bin/sh -c #(nop)  CMD ["/bin/bash"]
@@ -596,9 +612,11 @@ docker run --rm primer-demo
 
 作られた層を見ると、書いた順に積まれているのが分かる。
 
+{% raw %}
 ```bash
 docker history primer-demo --format "{{.Size}}\t{{.CreatedBy}}"
 ```
+{% endraw %}
 
 ```
 0B	CMD ["/usr/games/cowsay" "Hello"]              ← 自分で書いた CMD
@@ -616,9 +634,11 @@ docker history primer-demo --format "{{.Size}}\t{{.CreatedBy}}"
 **下の5層は `FROM` で指定した `ubuntu:24.04` のもの**である。
 比べると分かる。
 
+{% raw %}
 ```bash
 docker history ubuntu:24.04 --format "{{.Size}}\t{{.CreatedBy}}"
 ```
+{% endraw %}
 
 ```
 0B	/bin/sh -c #(nop)  CMD ["/bin/bash"]
@@ -906,9 +926,11 @@ GREETING=overridden
 
 起動順も見える。
 
+{% raw %}
 ```bash
 docker compose ps --format '{{.Service}}\t{{.Status}}'
 ```
+{% endraw %}
 
 ```
 client	Up 1 second

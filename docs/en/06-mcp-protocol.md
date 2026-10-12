@@ -1,3 +1,9 @@
+---
+title: "Speaking MCP in raw JSON-RPC"
+description: "This is the main subject from here on. The search() we prepared in the previous chapters — we call it from another process. The agreement for doing that is MCP."
+lang: en
+---
+
 # Speaking MCP in raw JSON-RPC
 
 ![Alice and Bob playing with a frisbee](../images/alice-bob-frisbee.png)

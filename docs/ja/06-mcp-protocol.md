@@ -1,3 +1,9 @@
+---
+title: "MCP を生の JSON-RPC で話す"
+description: "ここからが本題である。前章までに用意した search() を、 別のプロセスから呼ぶ。そのための取り決めが MCP である。"
+lang: ja
+---
+
 # MCP を生の JSON-RPC で話す
 
 ![フリスビーで遊ぶ Alice と Bob](../images/alice-bob-frisbee.png)

@@ -1,3 +1,8 @@
+---
+title: "MCP RAG from scratch"
+description: "Understand MCP by writing it yourself. Build an MCP server and client by hand, from raw JSON-RPC over stdio to a working RAG loop with ChromaDB and a local LLM on Ollama. Free, open source, educational. English and Japanese."
+permalink: /
+---
 ![MCP RAG from scratch](docs/images/top.png)
 
 # MCP RAG from scratch
@@ -5,6 +10,17 @@
 **English** · [日本語](README-jp.md)
 
 This is hands-on material for **writing MCP and RAG yourself and understanding how they work**.
+
+<!-- SEO intro added by setup-github-pages; review and adjust -->
+
+If you have ever wanted to **build your own MCP server** — see what the
+**Model Context Protocol** actually sends on the wire, understand how
+**JSON-RPC** and **tool calling** fit together, or learn **RAG** by working
+through a small but real example — this course is for you. It covers
+**ChromaDB** vector search, sentence embeddings, and running a **local LLM**
+with **Ollama**, all on your own machine.
+
+<!-- /SEO intro -->
 
 You may have used an MCP-capable tool, but what happens inside is not visible.
 In this project, you write both the client and the server yourself.

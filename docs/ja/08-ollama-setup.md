@@ -1,3 +1,9 @@
+---
+title: "Ollama を用意する"
+description: "Ollama はすでに docker-compose.yml に入っている。インストールは要らない。 やることはモデルを1つ取ってくるだけである。"
+lang: ja
+---
+
 # Ollama を用意する
 
 ![ピクニックの持ち物を一緒に準備する Alice と Bob](../images/alice-bob-picnic-preparation.png)

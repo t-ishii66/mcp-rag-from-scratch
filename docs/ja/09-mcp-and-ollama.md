@@ -1,3 +1,9 @@
+---
+title: "MCP と Ollama の関係"
+description: "ツールを別プロセスから呼べるようになり、Ollama も動くようになった。 残るのはどのツールをどう呼ぶかを LLM に決めさせることである。"
+lang: ja
+---
+
 # MCP と Ollama の関係
 
 ![地図とコンパスで宝探しを楽しむ Alice と Bob](../images/alice-bob-treasure-hunt.png)

@@ -1,3 +1,9 @@
+---
+title: "The relationship between MCP and Ollama"
+description: "We can now call tools from another process, and Ollama runs too. What remains is letting the LLM decide which tool to call and how."
+lang: en
+---
+
 # The relationship between MCP and Ollama
 
 ![Alice and Bob enjoying a treasure hunt with a map and a compass](../images/alice-bob-treasure-hunt.png)

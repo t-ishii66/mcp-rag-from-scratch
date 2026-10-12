@@ -76,3 +76,6 @@ htmlcov/
 
 # .python-version is tracked on purpose: it pins the interpreter the same way
 # uv.lock pins the packages. Without it uv takes the newest CPython available.
+_site/
+.jekyll-cache/
+.jekyll-metadata
