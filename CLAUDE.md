@@ -59,7 +59,7 @@ MCP の理解には寄与しない。書きたくなったら**書かない。**
 ```
 mcp-rag-server/
 ├── pyproject.toml
-├── mkdocs.yml                # ドキュメントサイト設定（mkdocs-material）
+├── _config.yml                # GitHub Pages 設定（Jekyll + cayman）
 ├── src/
 │   ├── client/
 │   │   ├── __init__.py
