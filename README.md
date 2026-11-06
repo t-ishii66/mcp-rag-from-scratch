@@ -9,6 +9,8 @@ permalink: /
 
 **English** · [日本語](README-jp.md)
 
+> The documentation reads better on **[GitHub Pages](https://t-ishii66.github.io/mcp-rag-from-scratch/)**.
+
 This is hands-on material for **writing MCP and RAG yourself and understanding how they work**.
 
 <!-- SEO intro added by setup-github-pages; review and adjust -->

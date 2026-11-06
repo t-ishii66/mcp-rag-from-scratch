@@ -9,6 +9,8 @@ lang: ja
 
 [English](README.md) · **日本語**
 
+> ドキュメントは **[GitHub Pages](https://t-ishii66.github.io/mcp-rag-from-scratch/README-jp.html)** で読むと見やすいです。
+
 **MCP と RAG を自分で書いて、仕組みを理解する**ためのハンズオン教材です。
 
 <!-- SEO intro added by setup-github-pages; review and adjust -->
